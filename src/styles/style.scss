@@ -1,0 +1,544 @@
+// importing font from Google-Font
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700&display=swap');
+
+// Importing scss helper
+@import './foundation/mixin', './foundation/variables',
+  './foundation/include-media';
+
+// Importing scss pages
+@import './pages/detail.scss';
+@import './pages/tab.scss';
+@import './foundation/restaurant-not-found';
+@import './foundation/loading';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a:focus {
+  outline: 1px solid blue;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+  list-style: none;
+}
+
+.skip-link:focus {
+  outline: 1px solid blue;
+  top: 0;
+}
+
+// Header Styling
+header {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../public/images/heros/hero-image_3.jpg');
+  background-position: center;
+
+  &::after {
+    content: '';
+    top: 0;
+    left: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000, $alpha: 0.8);
+  }
+
+  #header-content {
+    position: absolute;
+    z-index: 1;
+
+    h1.header-content-title {
+      @include set-font('Cormorant Garamond', 160px, 300);
+      color: $font-color-light;
+
+      @include media('<940px') {
+        font-size: 120px;
+      }
+
+      @include media('>phone', '<=tablet') {
+        text-align: center;
+        font-size: 62px;
+      }
+
+      @include media('<=phone') {
+        text-align: center;
+        font-size: 40px;
+      }
+    }
+
+    h2.header-content-subtitle {
+      @include set-font('Cormorant Garamond', 24px, 400);
+      color: $font-color-light;
+      text-align: center;
+
+      @include media('>phone', '<=tablet') {
+        font-size: 22px;
+      }
+
+      @include media('<=phone') {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// Navigation Styling
+nav {
+  width: 100%;
+  height: 128px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 28px 108px 28px 108px;
+  z-index: 100;
+
+  @include media('<=phone') {
+    padding: 16px;
+  }
+
+  @include media('>phone', '<=tablet') {
+    padding: 22px 40px 22px 40px;
+  }
+
+  .topnav {
+    width: 100%;
+    @include flex-between;
+
+    span {
+      @include set-font('Cormorant Garamond', 32px, 400);
+      color: $font-color-light;
+
+      @include media('<=phone') {
+        font-size: 24px;
+      }
+    }
+
+    .link-content {
+      a.hamburger {
+        display: none;
+        color: $font-color-light;
+        text-decoration: none;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 32px;
+
+        @include media('>phone', '<=tablet') {
+          @include flex-centering;
+          cursor: pointer;
+        }
+
+        @include media('<=phone') {
+          @include flex-centering;
+          cursor: pointer;
+        }
+      }
+
+      .drawer {
+        @include flex-centering;
+
+        @include media('<=tablet') {
+          position: fixed;
+          z-index: 5;
+          background-color: $footer-color;
+          width: 70%;
+          height: 100vh;
+          top: 0;
+          right: -70%;
+          flex-direction: column;
+          transition: 0.5s;
+        }
+
+        a.nav-wide {
+          display: block;
+          min-width: 44px;
+          min-height: 44px;
+          text-align: center;
+          list-style: none;
+          text-decoration: none;
+          color: $font-color-light;
+          transition: 0.4s;
+          margin-left: 32px;
+          @include set-font('Lato', 16px, 300);
+          @include flex-centering;
+
+          &:hover {
+            color: $font-color-dark;
+            transition: 0.4s;
+          }
+
+          @include media('>phone', '<=tablet') {
+            display: none;
+            font-size: 18px;
+            margin-left: 0;
+          }
+
+          @include media('<=phone') {
+            display: none;
+            font-size: 18px;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Section features styling
+section.features {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 7% 10% 2% 10%;
+
+  @include media('<=400px') {
+    padding: 7% 4% 2% 4%;
+  }
+
+  // Sub content services styling
+  .services {
+    flex: 30%;
+    margin-bottom: 48px;
+
+    h2 {
+      @include set-font('Lato', 18px, 700);
+      color: $font-color-dark;
+    }
+
+    .content-services {
+      margin-top: 16px;
+      min-width: 260px;
+
+      p {
+        @include set-font('Lato', 18px, 400);
+        color: $font-color-dark;
+        line-height: 32px;
+      }
+    }
+  }
+
+  // Sub content about styling
+  .about {
+    flex: 70%;
+
+    h2 {
+      @include set-font('Lato', 18px, 700);
+      color: $font-color-dark;
+    }
+
+    .content-about {
+      max-width: 600px;
+      margin-top: 16px;
+
+      p {
+        @include set-font('Lato', 18px, 400);
+        color: $font-color-dark;
+        line-height: 32px;
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+// Section explore styling
+section.explore {
+  padding: 0 10%;
+  margin: 40px 0 80px 0;
+
+  @include media('<=400px') {
+    padding: 0 5%;
+  }
+
+  .explore-title {
+    margin-bottom: 36px;
+
+    h2 {
+      @include set-font('Lato', 18px, 700);
+      color: $font-color-dark;
+    }
+
+    p {
+      @include set-font('Lato', 18px, 400);
+      color: $font-color-dark;
+      line-height: 32px;
+      margin-top: 16px;
+    }
+  }
+
+  .search-explore {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    .input-search-container {
+      width: 90%;
+      input {
+        padding: 8px;
+        width: 100%;
+        height: 100%;
+        border: solid 2px #212025;
+        @include set-font('Darker Grotesque', 18px, 500);
+      }
+      .warning {
+        border: solid 2px rgb(226, 64, 64) !important;
+        transition: 0.1s;
+      }
+    }
+    .button-search-container {
+      width: 10%;
+      min-width: 44px;
+      min-height: 44px;
+      button {
+        cursor: pointer;
+        padding: 8px;
+        width: 100%;
+        height: 44px;
+        padding: 4px 8px;
+        text-decoration: none;
+        border-style: none;
+        background-color: #212025;
+        color: #fff;
+      }
+    }
+  }
+
+  .explore-content,
+  .favorites-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .restaurant {
+      padding: 10px;
+      flex: 33.3%;
+      margin-bottom: 40px;
+      flex-direction: column;
+
+      @include media('>phone', '<=tablet') {
+        @include flex-centering;
+      }
+
+      .main-image-container {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        text-align: center;
+
+        img.main-image {
+          height: 300px;
+          @include media('<=400px') {
+            height: 260px;
+          }
+        }
+
+        @include media('<=400px') {
+          width: 260px;
+          height: 260px;
+        }
+
+        @include media('<=300px') {
+          width: 220px;
+        }
+      }
+      .sub-info {
+        display: flex;
+        width: 300px;
+        margin-bottom: 16px;
+        @include media('<=400px') {
+          width: 220px;
+        }
+        .rating {
+          display: flex;
+          span {
+            color: #ffb84e;
+            margin-right: 10px;
+          }
+          p {
+            @include set-font('Lato', 16px, 400);
+          }
+        }
+        p.kota {
+          margin-left: 22px;
+          @include set-font('Lato', 16px, 400);
+        }
+      }
+
+      .restaurant-info {
+        width: 300px;
+
+        @include media('<=400px') {
+          width: 220px;
+        }
+
+        @include media('<=300px') {
+          width: 200px;
+        }
+
+        h2 {
+          @include set-font('Lato', 22px, 600);
+        }
+
+        p {
+          @include set-font('Lato', 16px, 400);
+          line-height: 32px;
+        }
+      }
+
+      .restaurant-button {
+        width: 300px;
+        a {
+          min-width: 44px;
+          min-height: 44px;
+          @include flex-centering;
+          background-color: #4caf50; /* Green */
+          border: none;
+          color: white;
+          padding: 0px 8px;
+          margin-top: 8px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          cursor: pointer;
+          @include media('<=400px') {
+            width: 100%;
+          }
+        }
+        @include media('<=400px') {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 7% 10% 7% 10%;
+  background-color: $background-dark;
+
+  h2.title-footer-content {
+    @include set-font('Cormorant Garamond', 80px, 300);
+    color: $font-color-light;
+    margin-bottom: 92px;
+
+    @include media('>phone', '<=tablet') {
+      font-size: 48px;
+    }
+
+    @include media('<=phone') {
+      font-size: 32px;
+    }
+  }
+  .footer-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .about-me {
+      flex: 30%;
+      margin-bottom: 36px;
+      min-width: 300px;
+
+      @include media('<=phone') {
+        min-width: 200px;
+      }
+      h3 {
+        @include set-font('Lato', 16px, 700);
+        color: $font-color-light;
+        margin-bottom: 16px;
+      }
+      .about-me-content {
+        p {
+          @include set-font('Lato', 16px, 400);
+          color: $font-color-light;
+          line-height: 32px;
+        }
+      }
+    }
+    .about-content {
+      flex: 40%;
+      margin-bottom: 36px;
+      min-width: 300px;
+      padding-right: 7%;
+      @include media('<=phone') {
+        min-width: 200px;
+      }
+      h2 {
+        @include set-font('Lato', 16px, 700);
+        color: $font-color-light;
+        margin-bottom: 16px;
+      }
+      .about-app-content {
+        p {
+          @include set-font('Lato', 16px, 400);
+          color: $font-color-light;
+          line-height: 32px;
+        }
+      }
+    }
+    .for-work {
+      flex: 30%;
+      margin-bottom: 36px;
+      min-width: 300px;
+      @include media('<=phone') {
+        min-width: 200px;
+      }
+      h2 {
+        @include set-font('Lato', 16px, 700);
+        margin-bottom: 16px;
+
+        color: $font-color-light;
+      }
+      .for-work-content {
+        p {
+          @include set-font('Lato', 16px, 400);
+          color: $font-color-light;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  width: 100%;
+  height: 87px;
+  background-color: #212025;
+  @include flex-centering;
+  p {
+    @include set-font('Lato', 18px, 300);
+    color: #fdf8ee;
+    @include media('<=phone') {
+      font-size: 14px;
+    }
+  }
+}
+
+nav .topnav .link-content .open {
+  transition: 0.5s;
+  right: 0;
+}
+
+nav .topnav .link-content .open .nav-wide {
+  display: block !important;
+}

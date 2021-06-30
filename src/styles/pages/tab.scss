@@ -1,0 +1,40 @@
+section.tab-content {
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  padding: 2% 10% 2% 10%;
+  .tab-explore {
+    width: 50%;
+    button.tab-button-explore {
+      @include set-font('Lato', 18px, 700);
+      border: 2px solid #4caf50;
+      color: #4caf50;
+      width: 100%;
+      line-height: 40px;
+      background-color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    button.on-mode {
+      background-color: #4caf50;
+      color: #fff;
+    }
+  }
+  .tab-favorites {
+    width: 50%;
+    button.tab-button-favorites {
+      border: 2px solid #4caf50;
+      color: #fff;
+      @include set-font('Lato', 18px, 700);
+      width: 100%;
+      line-height: 40px;
+      text-decoration: none;
+      background-color: #4caf50;
+      cursor: pointer;
+    }
+    button.on-mode {
+      background-color: #fff;
+      color: #4caf50;
+    }
+  }
+}

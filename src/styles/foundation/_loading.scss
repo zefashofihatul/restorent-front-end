@@ -1,0 +1,55 @@
+#loadingAnimation {
+  width: 120px;
+  height: 120px;
+}
+
+@keyframes animation {
+  0% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -105;
+  }
+  50% {
+    stroke-dasharray: 80 10;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -300;
+  }
+}
+
+#spinner {
+  transform-origin: center;
+  animation-name: animation;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier;
+  animation-iteration-count: infinite;
+}
+
+#loadingCard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loadingContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: $font-color-light;
+  position: fixed;
+  @include flex-centering;
+  z-index: 1000;
+  bottom: 0;
+  transition: 0.5s;
+  #loading {
+    @include flex-centering;
+    h2 {
+      @include set-font('Cormorant Garamond', 160px, 300);
+    }
+  }
+}
+
+.loadingOpen {
+  bottom: 100% !important;
+}

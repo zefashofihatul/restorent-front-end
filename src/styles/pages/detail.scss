@@ -1,0 +1,278 @@
+.container-save {
+  .save-restaurant {
+    cursor: pointer;
+    @include flex-centering;
+    position: fixed;
+    bottom: 80px;
+    right: 80px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: #5f45c7;
+    @include media('>phone', '<=tablet') {
+      width: 64px;
+      height: 64px;
+      bottom: 30px;
+      right: 30px;
+    }
+    @include media('<=phone') {
+      width: 64px;
+      height: 64px;
+      bottom: 30px;
+      right: 30px;
+    }
+
+    button {
+      cursor: pointer;
+      border-style: none;
+      background-color: transparent;
+      font-size: 40px;
+      color: white;
+      &:focus {
+        outline: 4px solid yellow !important;
+      }
+    }
+  }
+}
+section.detail-page {
+  .back-arrow {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 130px;
+    justify-content: space-between;
+    position: absolute;
+    padding: 0 40px;
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      background-color: transparent;
+      border-style: none;
+      font-size: 40px;
+      color: white;
+      @include media('<=400px') {
+        font-size: 34px;
+      }
+      @include media('>phone', '<=tablet') {
+        font-size: 34px;
+      }
+    }
+    @include media('<=400px') {
+      padding: 0 20px;
+      height: 80px;
+    }
+    @include media('>phone', '<=tablet') {
+      height: 100px;
+    }
+    .saved {
+      p {
+        @include set-font('Cormorant Garamond', 24px, 400);
+        color: white;
+        @include media('<=400px') {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  .container-general-information {
+    padding: 8% 4%;
+    background: #2f2e32;
+    @include media('<=400px') {
+      padding-top: 80px;
+    }
+    @include media('>phone', '<=tablet') {
+      padding-top: 90px;
+    }
+    .general-information {
+      @include flex-centering;
+      flex-direction: column;
+      .title-general-information {
+        text-align: center;
+        h1 {
+          @include set-font('Cormorant Garamond', 72px, 300);
+          color: #fdf8ee;
+
+          @include media('<940px') {
+            font-size: 54px;
+          }
+
+          @include media('>phone', '<=tablet') {
+            text-align: center;
+            font-size: 40px;
+          }
+
+          @include media('<=phone') {
+            text-align: center;
+            font-size: 32px;
+          }
+        }
+      }
+      .img-general-information {
+        margin: 26px 0;
+        max-width: 540px;
+        img {
+          width: 100%;
+        }
+      }
+      .sub-general-information {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        .card-information {
+          width: 210px;
+          height: 100px;
+          border: 2px #fdf8ee solid;
+          margin: 4px 4px;
+          @include flex-centering;
+          flex-direction: column;
+
+          .card-information-title {
+            display: block;
+            @include set-font('Darker Grotesque', 16px, 400);
+            color: #fdf8ee;
+          }
+          .card-information-sub {
+            display: block;
+            @include set-font('Darker Grotesque', 24px, 500);
+            color: #fdf8ee;
+          }
+          .card-information-street {
+            padding: 24px;
+            display: block;
+            @include set-font('Darker Grotesque', 16px, 400);
+            color: #fdf8ee;
+          }
+        }
+      }
+    }
+  }
+  .container-description {
+    padding: 4% 8%;
+    color: #212025;
+    .description {
+      .description-content {
+        .description-content-title {
+          @include set-font('Darker Grotesque', 24px, 800);
+        }
+        .description-content-article {
+          @include set-font('Darker Grotesque', 18px, 400);
+          line-height: 32px;
+        }
+      }
+    }
+    .container-menu-review {
+      display: flex;
+      justify-content: space-between;
+      @include media('>phone', '<=tablet') {
+        flex-wrap: wrap;
+      }
+
+      @include media('<=phone') {
+        flex-wrap: wrap;
+      }
+      .menu {
+        margin-right: 40px;
+        .foods-menu {
+          margin-top: 48px;
+          .foods-menu-title {
+            @include set-font('Darker Grotesque', 24px, 800);
+          }
+          .foods-menu-article {
+            @include set-font('Darker Grotesque', 22px, 400);
+          }
+        }
+        .drinks-menu {
+          margin-top: 48px;
+          .drinks-menu-title {
+            @include set-font('Darker Grotesque', 24px, 800);
+          }
+          .drinks-menu-article {
+            @include set-font('Darker Grotesque', 22px, 400);
+          }
+        }
+      }
+      .costumer-review {
+        width: 600px;
+        margin-top: 48px;
+        .costumer-review-title {
+          @include set-font('Darker Grotesque', 24px, 800);
+        }
+        .costumer-review-description {
+          @include set-font('Darker Grotesque', 18px, 400);
+        }
+        .add-review {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-top: 16px;
+
+          .input {
+            width: 100%;
+            margin-bottom: 10px;
+            input {
+              padding: 8px;
+              width: 100%;
+              height: 100%;
+              border: solid 2px #212025;
+              @include set-font('Darker Grotesque', 18px, 500);
+            }
+            .warning {
+              border: solid 2px rgb(226, 64, 64) !important;
+              transition: 0.1s;
+            }
+          }
+          .button {
+            width: 100%;
+            margin-bottom: 10px;
+            button {
+              cursor: pointer;
+              padding: 8px;
+              width: 100%;
+              height: 44px;
+              padding: 4px 8px;
+              text-decoration: none;
+              border-style: none;
+              background-color: #212025;
+              color: #fff;
+            }
+          }
+        }
+        .costumer-review-cards {
+          margin-top: 26px;
+          .review {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            .img-review {
+              width: 53px;
+              height: 53px;
+              background-color: #212025;
+            }
+            .costumer-review-content {
+              flex: 1;
+              padding: 0 16px;
+              .costumer-review-content-title {
+                display: flex;
+                align-items: center;
+                h3 {
+                  margin-right: 16px;
+                  @include set-font('Darker Grotesque', 18px, 700);
+                }
+                span {
+                  @include set-font('Darker Grotesque', 12px, 800);
+                }
+              }
+              .costumer-review-content-sub {
+                p {
+                  line-height: 18px;
+                  @include set-font('Darker Grotesque', 18px, 400);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

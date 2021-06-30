@@ -1,0 +1,9 @@
+.restaurantNotFound {
+  margin-top: 40px;
+  width: 100%;
+  @include flex-centering();
+  p {
+    @include set-font('Cormorant Garamond', 24px, 400);
+    color: $font-color-dark;
+  }
+}
