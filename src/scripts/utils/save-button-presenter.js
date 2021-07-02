@@ -4,7 +4,7 @@ import {
   createDeleteButtonTemplate,
 } from '../views/component/save-button';
 
-const saveButtonInitiator = {
+const saveButtonPresenter = {
   async init({ saveButtonContainer, restaurant }) {
     this._saveButtonContainer = saveButtonContainer;
     this._restaurant = restaurant;
@@ -50,4 +50,4 @@ const saveButtonInitiator = {
   },
 };
 
-export default saveButtonInitiator;
+export default saveButtonPresenter;

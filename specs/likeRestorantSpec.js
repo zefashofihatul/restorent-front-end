@@ -1,5 +1,5 @@
-import saveButtonInitiator from '../src/scripts/utils/save-button-initiator';
 import FavoriteRestaurant from '../src/scripts/data/favorites-restaurant-idb';
+import * as TestFactories from './helpers/testFactories';
 
 describe('Save Favorite Restaurant', () => {
   const addLikeButtonContainer = () => {
@@ -12,24 +12,16 @@ describe('Save Favorite Restaurant', () => {
   });
 
   it('Should show the save button when the restaurant has not been saved before', async () => {
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: 1,
-      },
-    });
+    const idTest = 1;
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
     expect(
       document.querySelector('[aria-label="save restaurant"]')
     ).toBeTruthy();
   });
 
   it('Should not show the trash button when the restaurant has not been saved before', async () => {
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: 1,
-      },
-    });
+    const idTest = 1;
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
     expect(
       document.querySelector('[aria-label="unsave restaurant"]')
     ).toBeFalsy();
@@ -37,12 +29,7 @@ describe('Save Favorite Restaurant', () => {
 
   it('Should be able to like the save the restaurant', async () => {
     const idTest = 1;
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: idTest,
-      },
-    });
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
 
     document.querySelector('#saveButton').dispatchEvent(new Event('click'));
     const restaurant = await FavoriteRestaurant.getRestaurant(idTest);
@@ -52,12 +39,7 @@ describe('Save Favorite Restaurant', () => {
 
   it('Should not add a restaurant again when its saved before', async () => {
     const idTest = 1;
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: idTest,
-      },
-    });
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
     await FavoriteRestaurant.putRestaurant({ id: idTest });
     document.querySelector('#saveButton').dispatchEvent(new Event('click'));
     expect(await FavoriteRestaurant.getAllRestaurant()).toEqual([
@@ -66,12 +48,11 @@ describe('Save Favorite Restaurant', () => {
     await FavoriteRestaurant.deleteRestaurant(idTest);
   });
 
-  xit('Should not add a restaurant when it has no id', async () => {
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {},
-    });
+  it('Should not add a restaurant when it has no id', async () => {
+    await TestFactories.createLikeButtonPresenterWithRestaurant({});
+
     document.querySelector('#saveButton').dispatchEvent(new Event('click'));
+
     expect(await FavoriteRestaurant.getAllRestaurant()).toEqual([]);
   });
 });

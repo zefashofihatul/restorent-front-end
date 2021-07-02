@@ -1,7 +1,7 @@
 import RestaurantSource from '../../data/restaurantSource';
 import restaurantDetail from '../templates/restaurant-detail';
 import UrlParser from '../../routes/url-parser';
-import saveButtonInitiator from '../../utils/save-button-initiator';
+import saveButtonPresenter from '../../utils/save-button-presenter';
 import AddReviewInitiator from '../../utils/add-review-initiator';
 
 const Detail = {
@@ -27,7 +27,7 @@ const Detail = {
   },
 
   async _initialDetailShell(restaurant) {
-    saveButtonInitiator.init({
+    saveButtonPresenter.init({
       saveButtonContainer: document.querySelector('.container-save'),
       backPageButton: document.querySelector('#back-page-button'),
       restaurant,

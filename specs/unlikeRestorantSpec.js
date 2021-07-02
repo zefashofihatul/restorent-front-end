@@ -1,5 +1,5 @@
 import FavoriteRestaurant from '../src/scripts/data/favorites-restaurant-idb';
-import saveButtonInitiator from '../src/scripts/utils/save-button-initiator';
+import * as TestFactories from './helpers/testFactories';
 
 const addSaveButtonContainer = () => {
   document.body.innerHTML += '<div class="container-save"></div>';
@@ -19,12 +19,8 @@ describe('Unsave favorite restaurant', () => {
   });
 
   it('Should display trash button when the restaurant has been liked', async () => {
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: 1,
-      },
-    });
+    const idTest = 1;
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
     expect(
       document.querySelector('[aria-label="unsave restaurant"]')
     ).toBeTruthy();
@@ -32,12 +28,8 @@ describe('Unsave favorite restaurant', () => {
 
   it('Should not display save button when the restaurant has been liked', async () => {
     const idTest = 1;
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: idTest,
-      },
-    });
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
+
     expect(
       document.querySelector('[aria-label="save restaurant"]')
     ).toBeFalsy();
@@ -45,12 +37,8 @@ describe('Unsave favorite restaurant', () => {
 
   it('Should be able to remove saved restaurant from database', async () => {
     const idTest = 1;
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: idTest,
-      },
-    });
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
+
     document
       .querySelector('[aria-label="unsave restaurant"')
       .dispatchEvent(new Event('click'));
@@ -59,12 +47,8 @@ describe('Unsave favorite restaurant', () => {
 
   it('Should not throw error if the unsaved restaurant is not in the list', async () => {
     const idTest = 1;
-    await saveButtonInitiator.init({
-      saveButtonContainer: document.querySelector('.container-save'),
-      restaurant: {
-        id: idTest,
-      },
-    });
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: idTest });
+
     await FavoriteRestaurant.deleteRestaurant(idTest);
     document
       .querySelector('[aria-label="unsave restaurant"]')
