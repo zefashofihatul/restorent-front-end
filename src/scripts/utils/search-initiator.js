@@ -2,7 +2,7 @@ import RestaurantSource from '../data/restaurantSource';
 import restaurantCard from '../views/templates/restaurant-card';
 import restaurantNotFound from '../views/component/restaurant-not-found';
 
-const SearchInitiator = {
+const RestaurantSearchInitiator = {
   init({ inputSearch, buttonSearch }) {
     buttonSearch.addEventListener('click', async () => {
       if (inputSearch.value === '') {
