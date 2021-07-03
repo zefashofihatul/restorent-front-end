@@ -264,7 +264,12 @@ section.detail-page {
                 }
               }
               .costumer-review-content-sub {
+                width: 300px;
+                @include media('<438px') {
+                  width: 150px;
+                }
                 p {
+                  word-wrap: break-word;
                   line-height: 18px;
                   @include set-font('Darker Grotesque', 18px, 400);
                 }
