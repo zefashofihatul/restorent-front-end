@@ -1,5 +1,6 @@
 import RestaurantSource from '../../data/restaurantSource';
 import restaurantDetail from '../templates/restaurant-detail';
+import FavoriteRestaurant from '../../data/favorites-restaurant-idb';
 import UrlParser from '../../routes/url-parser';
 import saveButtonPresenter from '../../utils/save-button-presenter';
 import AddReviewInitiator from '../../utils/add-review-initiator';
@@ -30,6 +31,7 @@ const Detail = {
     saveButtonPresenter.init({
       saveButtonContainer: document.querySelector('.container-save'),
       backPageButton: document.querySelector('#back-page-button'),
+      favoriteRestaurant: FavoriteRestaurant,
       restaurant,
     });
     AddReviewInitiator.init({
