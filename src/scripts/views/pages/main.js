@@ -1,6 +1,6 @@
 import RestaurantSource from '../../data/restaurantSource';
 import restaurantCard from '../templates/restaurant-card';
-import SearchInitiator from '../../utils/search-initiator';
+import RestaurantSearchPresenter from '../../utils/restaurant-search-presenter';
 
 const Main = {
   async render() {
@@ -39,9 +39,10 @@ const Main = {
   },
 
   async _initialMainShell() {
-    SearchInitiator.init({
+    RestaurantSearchPresenter.init({
       inputSearch: document.querySelector('#input-search-restaurant'),
       buttonSearch: document.querySelector('#button-search-restaurant'),
+      restaurantSource: RestaurantSource,
     });
   },
 };

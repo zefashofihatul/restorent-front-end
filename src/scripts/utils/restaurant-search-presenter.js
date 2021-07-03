@@ -1,19 +1,26 @@
-import RestaurantSource from '../data/restaurantSource';
 import restaurantCard from '../views/templates/restaurant-card';
 import restaurantNotFound from '../views/component/restaurant-not-found';
 
-const SearchInitiator = {
-  init({ inputSearch, buttonSearch }) {
-    buttonSearch.addEventListener('click', async () => {
-      if (inputSearch.value === '') {
-        inputSearch.classList.add('warning');
+const RestaurantSearchPresenter = {
+  init({ inputSearch, buttonSearch, restaurantSource }) {
+    this._inputSearch = inputSearch;
+    this._buttonSearch = buttonSearch;
+    this._restaurantSource = restaurantSource;
+
+    this._listeningButtonSearch();
+  },
+
+  _listeningButtonSearch() {
+    this._buttonSearch.addEventListener('click', async () => {
+      if (this._inputSearch.value === '') {
+        this._inputSearch.classList.add('warning');
       } else {
         const exploreContent = document.querySelector('.explore-content');
-        const restaurants = await RestaurantSource.getSearchRestaurant(
-          inputSearch.value
-        );
-        inputSearch.classList.remove('warning');
         exploreContent.innerHTML = '<loading-card></loading-card>';
+        const restaurants = await this._restaurantSource.getSearchRestaurant(
+          this._inputSearch.value
+        );
+        this._inputSearch.classList.remove('warning');
         if (restaurants.length > 0) {
           this._renderCard(restaurants);
         } else {
@@ -38,4 +45,4 @@ const SearchInitiator = {
   },
 };
 
-export default SearchInitiator;
+export default RestaurantSearchPresenter;
