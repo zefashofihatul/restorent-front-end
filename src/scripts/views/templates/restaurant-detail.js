@@ -73,7 +73,7 @@ const restaurantDetail = (data) => {
               </div>
             </div>
 
-            <div class="costumer-review">
+            <div class="costumer-review" id="review">
               <h2 class="costumer-review-title" tabindex="0">
                 Costumer Review
               </h2>
