@@ -3,7 +3,7 @@ import restaurantDetail from '../templates/restaurant-detail';
 import FavoriteRestaurant from '../../data/favorites-restaurant-idb';
 import UrlParser from '../../routes/url-parser';
 import saveButtonPresenter from '../../utils/save-button-presenter';
-import AddReviewInitiator from '../../utils/add-review-initiator';
+import AddReviewPresenter from '../../utils/add-review-presenter';
 
 const Detail = {
   async render() {
@@ -34,10 +34,11 @@ const Detail = {
       favoriteRestaurant: FavoriteRestaurant,
       restaurant,
     });
-    AddReviewInitiator.init({
+    const presenter = new AddReviewPresenter({
       addReviewButton: document.querySelector('#add-review-button'),
       nameInputElement: document.querySelector('#add-review-name'),
       textInputElement: document.querySelector('#add-review-text'),
+      restaurant,
     });
   },
 };
