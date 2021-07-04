@@ -5,7 +5,6 @@ import RestaurantSearchPresenter from '../../utils/restaurant-search-presenter';
 const Main = {
   async render() {
     return `
-
     <!-- Explore Restaurant -->
     <section class="explore">
       <div class="explore-title">
@@ -39,7 +38,7 @@ const Main = {
   },
 
   async _initialMainShell() {
-    RestaurantSearchPresenter.init({
+    const present = new RestaurantSearchPresenter({
       inputSearch: document.querySelector('#input-search-restaurant'),
       buttonSearch: document.querySelector('#button-search-restaurant'),
       restaurantSource: RestaurantSource,

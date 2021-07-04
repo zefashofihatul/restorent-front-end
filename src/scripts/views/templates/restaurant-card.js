@@ -1,7 +1,7 @@
 import CONFIG from '../../globals/config';
 
 // function for maximum text
-function truncateText(data, maxLength) {
+function truncateText(data = 'Untitled', maxLength) {
   const truncated = data.split(' ');
   let result = '';
   for (let a = 0; a < maxLength; a += 1) {
@@ -29,7 +29,7 @@ function restaurantCard(data) {
     <p class="kota">${data.city}</p>
   </div>
   <div class="restaurant-info">
-    <h2>${data.name}</h2>
+    <h2 class="restaurant-info-name">${data.name}</h2>
     <p>
       ${truncateText(data.description, 10)} ...
     </p>
