@@ -1,5 +1,6 @@
 import restaurantCard from '../templates/restaurant-card';
 import FavoriteRestaurant from '../../data/favorites-restaurant-idb';
+import restaurantNotFound from '../component/restaurant-not-found';
 
 const Favorites = {
   async render() {
@@ -22,9 +23,14 @@ const Favorites = {
     const restaurants = await FavoriteRestaurant.getAllRestaurant();
     const restaurantsContainer = document.querySelector('.favorites-content');
     restaurantsContainer.innerHTML = '';
-    restaurants.forEach((restaurant) => {
-      restaurantsContainer.innerHTML += restaurantCard(restaurant);
-    });
+    console.log(restaurants);
+    if (!restaurants.length > 0) {
+      restaurantsContainer.innerHTML = restaurantNotFound();
+    } else {
+      restaurants.forEach((restaurant) => {
+        restaurantsContainer.innerHTML += restaurantCard(restaurant);
+      });
+    }
   },
 };
 
