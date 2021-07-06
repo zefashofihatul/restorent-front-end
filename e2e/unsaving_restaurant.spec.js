@@ -18,6 +18,7 @@ Scenario('Unsaving restaurant from API RestaurantDB', async ({ I }) => {
   I.amOnPage('/#/detail');
 
   I.seeElement('[aria-label="unsave restaurant"]');
+
   I.click(locate('[aria-label="unsave restaurant"]'));
 
   I.click(locate('#back-page-button'));

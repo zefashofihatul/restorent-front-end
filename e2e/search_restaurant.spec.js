@@ -28,3 +28,15 @@ Scenario('Searching restaurant from API RestaurantDB', async ({ I }) => {
     titleRestaurantOnSearchContainer
   );
 });
+
+Scenario('Searching restaurant but not found', async ({ I }) => {
+  I.seeElement('.restaurant');
+
+  const titleDummyWillNotFoud = 'Just for testing';
+
+  I.seeElement('.input-search');
+  I.fillField('.input-search', titleDummyWillNotFoud);
+  I.click(locate('#button-search-restaurant'));
+
+  I.see('Restaurant Not Found', '.restaurantNotFound p');
+});

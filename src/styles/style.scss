@@ -46,8 +46,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../public/images/heros/hero-image_3.jpg');
-  background-position: center;
+
+  // @include media('<=600px') {
+  //   background-image: url('../public/images/heros/hero-image_3.jpg') !important;
+  // }
 
   &::after {
     content: '';
