@@ -16,8 +16,8 @@ function restaurantCard(data) {
   <div tabindex="0" class="restaurant">
   <div class="main-image-container">
     <img
-      class="main-image"
-      src="${CONFIG.BASE_IMG_URL}${data.pictureId}"
+      class="main-image lazyload"
+      data-src="${CONFIG.BASE_IMG_URL}${data.pictureId}"
       alt="Restaurant"
     />
   </div>
