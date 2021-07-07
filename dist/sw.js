@@ -1,7 +1,11 @@
 var serviceWorkerOption = {
   "assets": [
     "/images/hero-image_3.198d07d4a138115e1f173e2d8efe97d7.jpg",
-    "/bundle.js",
+    "/defaultVendors~main~678f84af.bundle.js",
+    "/defaultVendors~main~d939e436.bundle.js",
+    "/main~08d14693.bundle.js",
+    "/main~5785a947.bundle.js",
+    "/main~bbd9bfa5.bundle.js",
     "/favicon.png",
     "/manifest.json",
     "/icons/icon-128x128.png",
@@ -12,7 +16,6 @@ var serviceWorkerOption = {
     "/icons/icon-512x512.png",
     "/icons/icon-72x72.png",
     "/icons/icon-96x96.png",
-    "/images/heros/hero-image_3.jpg",
     "/index.html"
   ]
 };
